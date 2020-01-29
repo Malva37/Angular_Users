@@ -1,0 +1,63 @@
+<div class="dataForRegistr">
+
+
+
+  <div class="form-group">
+    <label for="login">Login</label>
+    <input [(ngModel)]="login" name='login' type="text" class="form-control" placeholder="Enter login" id="login">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input [(ngModel)]="password" name='password' type="password" class="form-control" placeholder="Enter password"
+      id="password">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input [(ngModel)]="email" name='email' type="email" class="form-control" placeholder="Enter email" id="email">
+  </div>
+
+  <div [hidden]="btnAdd">
+    <input type="button" value="Add user" class='btn btn-success' (click)="addPerson()">
+  </div>
+
+  <div [hidden] ="!btnChange">
+    <input type="button" value="Save edit user" class='btn btn-primary'(click)="saveEditUser()" >
+  </div>
+
+</div>
+
+
+
+
+<div class="tableUsers">
+  <div class="col-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>login</th>
+          <th>password</th>
+          <th>email</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of arrPerson; let i = index">
+          <td> {{ i+1 }}</td>
+          <td> {{ person.login }} </td>
+          <td> {{ person.password }} </td>
+          <td> {{ person.email }} </td>
+          <td>
+            <input (click)="editPerson(person)" type="button" value="edit" class='btn btn-warning'>
+          </td>
+          <td>
+            <input (click)="deletePerson(person)" type="button" value="delete" class='btn btn-danger'>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
